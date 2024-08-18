@@ -42,8 +42,7 @@ class OpenCVCapture(object):
 		print("DEBUG: cv2 read")
 		print("DEBUG: image show called")
 		cv2.imshow('file from camera', gray_img)
-		input ('press any key...')
-				
+		cv2.waitKey()		
 		
 
 		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
