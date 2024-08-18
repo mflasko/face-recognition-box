@@ -55,6 +55,18 @@ class OpenCVCapture(object):
 			cv2.destroyAllWindows()	
 		
 
+		#config.HAAR_FACES
+		haar_cascade = cv2.CascadeClassifier('Haarcascade_frontalface_default.xml') 
+		faces_rect = haar_cascade.detectMultiScale(gray_img, 1.1, 9) 
+		for (x, y, w, h) in faces_rect: 
+			cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+		cv2.imshow('Detected faces', img)
+		key = cv2.waitKey(0)
+		if key == 27: # if ESC is pressed, exit loop
+			cv2.destroyAllWindows()
+			
+
 		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
 		# Decode the image data and return an OpenCV image.
 		#image = cv2.imdecode(data, 1)
