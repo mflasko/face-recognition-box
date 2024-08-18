@@ -38,9 +38,10 @@ class OpenCVCapture(object):
 		picam2.stop()
 		print("DEBUG: captured image from camera")
 		img = cv2.imread('capture.jpg')
+		gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 		print("DEBUG: cv2 read")
 		print("DEBUG: image show called")
-		cv2.imshow('file from camera', img)
+		cv2.imshow('file from camera', gray_img)
 		input ('press any key...')
 				
 		
