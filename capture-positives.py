@@ -52,17 +52,12 @@ if __name__ == '__main__':
 			print ('Capturing image...')
 			image = camera.read()
 
-			cv2.imshow('from camera', image)
-			input("press any key to continue")
-
-
+			
 			# Convert image to grayscale.
 			image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 			# Get coordinates of single face in captured image.
 
-			cv2.imshow('greyscale from camera', image)
-			input("press any key to continue")
-
+			
 			result = face.detect_single(image)
 			if result is None:
 				print ('Could not detect single face!  Check the image in capture.pgm' \

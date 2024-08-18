@@ -40,15 +40,19 @@ class OpenCVCapture(object):
 		picam2.stop()
 		print("DEBUG: captured image from camera")
 		cv2.imshow('color image from camera', img)
-		cv2.waitKey(0)
-		input('press any key')
+		key = cv2.waitKey(0)
+		if key == 27: # if ESC is pressed, exit loop
+			cv2.destroyAllWindows()
+		print('DEBUG: onto greyscaling')
 
 
 		gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 		print("DEBUG: cv2 read")
 		print("DEBUG: image show called")
 		cv2.imshow('greyscale file from camera', gray_img)
-		cv2.waitKey(0)		
+		key = cv2.waitKey(0)
+		if key == 27: # if ESC is pressed, exit loop
+			cv2.destroyAllWindows()	
 		
 
 		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
@@ -59,4 +63,4 @@ class OpenCVCapture(object):
 		# Save captured image for debugging#.
 		#cv2.imwrite(config.DEBUG_IMAGE, img_array)
 		# Return the captured image data.
-		return img_array
+		return img
