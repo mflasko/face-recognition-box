@@ -33,15 +33,21 @@ class OpenCVCapture(object):
 		#picam2.preview_configuration.main.format = "RGB888"
 		picam2.start()
 		time.sleep(1)
-		#img_array = picam2.capture_array()  #returns numpy array 
-		picam2.capture_file("capture.jpg")
+		img = picam2.capture_array()  #returns numpy array 
+		#picam2.capture_file("capture.jpg")
+		#img = cv2.imread('capture.jpg')
+		
 		picam2.stop()
 		print("DEBUG: captured image from camera")
-		img = cv2.imread('capture.jpg')
+		cv2.imshow('color image from camera', img)
+		cv2.waitKey()
+		input('press any key')
+
+
 		gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 		print("DEBUG: cv2 read")
 		print("DEBUG: image show called")
-		cv2.imshow('file from camera', gray_img)
+		cv2.imshow('greyscale file from camera', gray_img)
 		cv2.waitKey()		
 		
 
