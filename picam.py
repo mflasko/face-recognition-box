@@ -10,10 +10,11 @@ import time
 
 import cv2
 import numpy as np
-import picamera
+#import picamera 
+from picamera2 import Picamera2
+import time
 
 import config
-
 
 class OpenCVCapture(object):
 	def read(self):
@@ -24,12 +25,23 @@ class OpenCVCapture(object):
 		# http://picamera.readthedocs.org/en/release-1.0/recipes1.html#capturing-to-an-opencv-object
 		# Capture a frame from the camera.
 		data = io.BytesIO()
-		with picamera.PiCamera() as camera:
-			camera.capture(data, format='jpeg')
-		data = np.fromstring(data.getvalue(), dtype=np.uint8)
+		#with picamera.PiCamera() as camera:
+		#	camera.capture(data, format='jpeg')
+
+		#upgrade to picamera2 code: 
+		picam2 = Picamera2()
+		picam2.preview_configuration.main.format = "RGB888"
+		picam2.start()
+		time.sleep(1)
+		img_array = picam2.capture_array()  #returns opencv array 
+		picam2.stop()
+
+		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
 		# Decode the image data and return an OpenCV image.
-		image = cv2.imdecode(data, 1)
-		# Save captured image for debugging.
-		cv2.imwrite(config.DEBUG_IMAGE, image)
+		#image = cv2.imdecode(data, 1)
+
+		#updated below after picamera2 changes
+		# Save captured image for debugging#.
+		cv2.imwrite(config.DEBUG_IMAGE, img_array)
 		# Return the captured image data.
-		return image
+		return img_array
