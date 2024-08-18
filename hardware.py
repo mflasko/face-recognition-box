@@ -5,8 +5,9 @@ Copyright 2013 Tony DiCola
 import time
 
 import cv2
-import RPIO
-from RPIO import PWM
+#import RPIO
+#from RPIO import PWM
+from gpiozero import Button, LED, Servo
 
 import picam
 import config
@@ -18,11 +19,18 @@ class Box(object):
 	the treasure box."""
 	def __init__(self):
 		# Initialize lock servo and button.
-		self.servo = PWM.Servo()
-		RPIO.setup(config.BUTTON_PIN, RPIO.IN)
+		#self.servo = PWM.Servo()
+		# code from: https://www.raspberrypi-spy.co.uk/2018/02/basic-servo-use-with-the-raspberry-pi/
+		self.servo = Servo() #likely more to do here 
+		
+		
+		self.button = Button(config.BUTTON_PIN)
+		
+		# original code
+		#RPIO.setup(config.BUTTON_PIN, RPIO.IN)
 		# Set initial box state.
-		self.button_state = RPIO.input(config.BUTTON_PIN)
-		self.is_locked = None
+		#self.button_state = RPIO.input(config.BUTTON_PIN)
+		#self.is_locked = None
 
 	def lock(self):
 		"""Lock the box."""
@@ -38,12 +46,14 @@ class Box(object):
 		"""Return True when the box button has transitioned from down to up (i.e.
 		the button was pressed)."""
 		old_state = self.button_state
-		self.button_state = RPIO.input(config.BUTTON_PIN)
+		#commented out so will run 
+		#self.button_state = RPIO.input(config.BUTTON_PIN)
+		
 		# Check if transition from down to up
 		if old_state == config.BUTTON_DOWN and self.button_state == config.BUTTON_UP:
 			# Wait 20 milliseconds and measure again to debounce switch.
 			time.sleep(20.0/1000.0)
-			self.button_state = RPIO.input(config.BUTTON_PIN)
+			#self.button_state = RPIO.input(config.BUTTON_PIN)
 			if self.button_state == config.BUTTON_UP:
 				return True
 		return False
