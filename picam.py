@@ -30,7 +30,7 @@ class OpenCVCapture(object):
 
 		#upgrade to picamera2 code: 
 		picam2 = Picamera2()
-		#picam2.preview_configuration.main.format = "RGB888"
+		picam2.preview_configuration.main.format = "RGB888"
 		picam2.start()
 		time.sleep(1)
 		img = picam2.capture_array()  #returns numpy array 
