@@ -51,11 +51,17 @@ if __name__ == '__main__':
 		if box.is_button_up() or is_letter_input('c'):
 			print ('Capturing image...')
 			image = camera.read()
+
+			cv2.imshow('from camera', image)
+			input("press any key to continue")
+
+
 			# Convert image to grayscale.
 			image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 			# Get coordinates of single face in captured image.
 
 			cv2.imshow('greyscale from camera', image)
+			input("press any key to continue")
 
 			result = face.detect_single(image)
 			if result is None:
