@@ -40,7 +40,7 @@ class OpenCVCapture(object):
 		picam2.stop()
 		print("DEBUG: captured image from camera")
 		cv2.imshow('color image from camera', img)
-		cv2.waitKey()
+		cv2.waitKey(0)
 		input('press any key')
 
 
@@ -48,7 +48,7 @@ class OpenCVCapture(object):
 		print("DEBUG: cv2 read")
 		print("DEBUG: image show called")
 		cv2.imshow('greyscale file from camera', gray_img)
-		cv2.waitKey()		
+		cv2.waitKey(0)		
 		
 
 		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
