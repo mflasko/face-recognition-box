@@ -21,7 +21,7 @@ class Box(object):
 		# Initialize lock servo and button.
 		#self.servo = PWM.Servo()
 		# code from: https://www.raspberrypi-spy.co.uk/2018/02/basic-servo-use-with-the-raspberry-pi/
-		self.servo = Servo() #likely more to do here 
+		self.servo = Servo(config.LOCK_SERVO_PIN) #likely more to do here 
 		
 		
 		self.button = Button(config.BUTTON_PIN)
