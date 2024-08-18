@@ -30,10 +30,11 @@ class OpenCVCapture(object):
 
 		#upgrade to picamera2 code: 
 		picam2 = Picamera2()
-		picam2.preview_configuration.main.format = "RGB888"
+		#picam2.preview_configuration.main.format = "RGB888"
 		picam2.start()
 		time.sleep(1)
-		img_array = picam2.capture_array()  #returns opencv array 
+		img_array = picam2.capture_array()  #returns numpy array 
+		print("DEBUG: captured image array")		
 		picam2.stop()
 
 		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
@@ -42,6 +43,6 @@ class OpenCVCapture(object):
 
 		#updated below after picamera2 changes
 		# Save captured image for debugging#.
-		cv2.imwrite(config.DEBUG_IMAGE, img_array)
+		#cv2.imwrite(config.DEBUG_IMAGE, img_array)
 		# Return the captured image data.
 		return img_array
