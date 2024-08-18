@@ -34,22 +34,28 @@ class Box(object):
 
 	def lock(self):
 		"""Lock the box."""
+		"""
 		self.servo.set_servo(config.LOCK_SERVO_PIN, config.LOCK_SERVO_LOCKED)
 		self.is_locked = True
-
+		"""
+		
 	def unlock(self):
 		"""Unlock the box."""
+		"""
 		self.servo.set_servo(config.LOCK_SERVO_PIN, config.LOCK_SERVO_UNLOCKED)
 		self.is_locked = False
+		"""
 
 	def is_button_up(self):
 		"""Return True when the box button has transitioned from down to up (i.e.
 		the button was pressed)."""
-		old_state = self.button_state
 		#commented out so will run 
+		#old_state = self.button_state
 		#self.button_state = RPIO.input(config.BUTTON_PIN)
 		
 		# Check if transition from down to up
+		
+		"""
 		if old_state == config.BUTTON_DOWN and self.button_state == config.BUTTON_UP:
 			# Wait 20 milliseconds and measure again to debounce switch.
 			time.sleep(20.0/1000.0)
@@ -57,3 +63,4 @@ class Box(object):
 			if self.button_state == config.BUTTON_UP:
 				return True
 		return False
+		"""
