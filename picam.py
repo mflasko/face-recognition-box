@@ -56,7 +56,7 @@ class OpenCVCapture(object):
 		
 
 		#config.HAAR_FACES
-		haar_cascade = cv2.CascadeClassifier('Haarcascade_frontalface_default.xml') 
+		haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
 		faces_rect = haar_cascade.detectMultiScale(gray_img, 1.1, 9) 
 		for (x, y, w, h) in faces_rect: 
 			cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
