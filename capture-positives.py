@@ -52,13 +52,18 @@ if __name__ == '__main__':
 			print ('Capturing image...')
 			img = camera.read()
 			
+			print("DEBUG: captured image from camera")
+			cv2.imshow('color image from camera', img)
+			key = cv2.waitKey(0)
+			if key == 27: # if ESC is pressed, exit loop
+				cv2.destroyAllWindows()
+
 			# Convert image to grayscale.
 			#image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 			# Get coordinates of single face in captured image.
 
 			print('DEBUG: onto greyscaling')
 			gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-			print("DEBUG: image show called")
 			cv2.imshow('greyscale file from camera', gray_img)
 			key = cv2.waitKey(0)
 			if key == 27: # if ESC is pressed, exit loop
@@ -81,7 +86,7 @@ if __name__ == '__main__':
 
 			print ("calling face crop:", x, y, w, h)
 			#crop image 
-			crop = face.crop(img, x, y, w, h)
+			crop = face.crop(gray_img, x, y, w, h)
 
 			"""
 			result = face.detect_single(image)
@@ -98,5 +103,5 @@ if __name__ == '__main__':
 			# Save image to file.
 			filename = os.path.join(config.POSITIVE_DIR, POSITIVE_FILE_PREFIX + '%03d.pgm' % count)
 			cv2.imwrite(filename, crop)
-			print ('Found face and wrote training image', filename)
+			print (f"Found face and wrote training image: {filename}")
 			count += 1
