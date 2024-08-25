@@ -82,3 +82,5 @@ if __name__ == '__main__':
 					box.unlock()
 				else:
 					print ("Did not recognize face!")
+				
+				input("press enter to continue ....")
