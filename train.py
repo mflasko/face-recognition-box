@@ -74,7 +74,8 @@ if __name__ == '__main__':
 
 	# Train model
 	print ("Training model...")
-	model = cv2.createEigenFaceRecognizer()
+	#model = cv2.createEigenFaceRecognizer()
+	model = cv2.face.EigenFaceRecognizer_create()
 	model.train(np.asarray(faces), np.asarray(labels))
 
 	# Save model results
