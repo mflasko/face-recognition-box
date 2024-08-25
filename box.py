@@ -14,7 +14,8 @@ if __name__ == '__main__':
 	print ("Loading training data...")
 	#model = cv2.createEigenFaceRecognizer()
 	model = cv2.face.EigenFaceRecognizer_create()
-	model.load(config.TRAINING_FILE)
+	#model.load(config.TRAINING_FILE)
+	model.read(config.TRAINING_FILE)
 	print ("Training data loaded!")
 	# Initialize camer and box.
 	camera = config.get_camera()
