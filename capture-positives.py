@@ -50,14 +50,40 @@ if __name__ == '__main__':
 		# Check if button was pressed or 'c' was received, then capture image.
 		if box.is_button_up() or is_letter_input('c'):
 			print ('Capturing image...')
-			image = camera.read()
-
+			img = camera.read()
 			
 			# Convert image to grayscale.
-			image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+			#image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 			# Get coordinates of single face in captured image.
 
+			print('DEBUG: onto greyscaling')
+			gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+			print("DEBUG: image show called")
+			cv2.imshow('greyscale file from camera', gray_img)
+			key = cv2.waitKey(0)
+			if key == 27: # if ESC is pressed, exit loop
+				cv2.destroyAllWindows()	
 			
+			#config.HAAR_FACES
+			haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
+			faces_rect = haar_cascade.detectMultiScale(gray_img, 1.1, 9) 
+			if len(faces_rect) < 1:
+				print("No face detected")
+			else:
+				print(f"# faces detected: {len(faces_rect)}")
+			for (x, y, w, h) in faces_rect: 
+				cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+			cv2.imshow('Detected faces', img)
+			key = cv2.waitKey(0)
+			if key == 27: # if ESC is pressed, exit loop
+				cv2.destroyAllWindows()
+
+			print ("calling face crop:", x, y, w, h)
+			#crop image 
+			crop = face.crop(img, x, y, w, h)
+
+			"""
 			result = face.detect_single(image)
 			if result is None:
 				print ('Could not detect single face!  Check the image in capture.pgm' \
@@ -67,6 +93,8 @@ if __name__ == '__main__':
 			# Crop image as close as possible to desired face aspect ratio.
 			# Might be smaller if face is near edge of image.
 			crop = face.crop(image, x, y, w, h)
+			"""
+
 			# Save image to file.
 			filename = os.path.join(config.POSITIVE_DIR, POSITIVE_FILE_PREFIX + '%03d.pgm' % count)
 			cv2.imwrite(filename, crop)
