@@ -55,6 +55,7 @@ class Box(object):
 		
 		# Check if transition from down to up
 		
+		
 		"""
 		if old_state == config.BUTTON_DOWN and self.button_state == config.BUTTON_UP:
 			# Wait 20 milliseconds and measure again to debounce switch.
@@ -64,3 +65,5 @@ class Box(object):
 				return True
 		return False
 		"""
+
+		return True
