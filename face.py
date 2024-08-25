@@ -33,8 +33,8 @@ def crop(image, x, y, w, h):
 	midy = y + h/2
 	y1 = max(0, midy-crop_height/2)
 	y2 = min(image.shape[0]-1, midy+crop_height/2)
-	print("crop returning, image shape:", image.shape, y1, y2, x, (x+w))
-	return image[y1:y2, x:x+w]
+	print(f"crop returning, image shape:{image.shape},{y1},{y2},{x},{x+w} ")
+	return image[round(y1):round(y2), round(x):round(x+w)]
 
 def resize(image):
 	"""Resize a face image to the proper size for training and detection.
