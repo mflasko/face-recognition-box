@@ -30,21 +30,26 @@ class Box(object):
 		#RPIO.setup(config.BUTTON_PIN, RPIO.IN)
 		# Set initial box state.
 		#self.button_state = RPIO.input(config.BUTTON_PIN)
-		#self.is_locked = None
+		self.is_locked = False
+
+	def is_locked(self):
+		return self.is_locked
 
 	def lock(self):
 		"""Lock the box."""
 		"""
 		self.servo.set_servo(config.LOCK_SERVO_PIN, config.LOCK_SERVO_LOCKED)
-		self.is_locked = True
 		"""
+		self.is_locked = True
+		
 		
 	def unlock(self):
 		"""Unlock the box."""
 		"""
 		self.servo.set_servo(config.LOCK_SERVO_PIN, config.LOCK_SERVO_UNLOCKED)
-		self.is_locked = False
 		"""
+		self.is_locked = False
+		
 
 	def is_button_up(self):
 		"""Return True when the box button has transitioned from down to up (i.e.
