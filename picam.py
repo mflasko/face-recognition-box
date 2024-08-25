@@ -17,6 +17,7 @@ import time
 import config
 
 class OpenCVCapture(object):
+	#picam2 = Picamera2()
 	def read(self):
 		"""Read a single frame from the camera and return the data as an OpenCV
 		image (which is a numpy array).
@@ -29,44 +30,18 @@ class OpenCVCapture(object):
 		#	camera.capture(data, format='jpeg')
 
 		#upgrade to picamera2 code: 
-		picam2 = Picamera2()
-		picam2.preview_configuration.main.format = "RGB888"
-		picam2.start()
-		time.sleep(1)
-		img = picam2.capture_array()  #returns numpy array 
+		#picam2 = Picamera2()
+		with Picamera2() as picam2:
+			picam2.preview_configuration.main.format = "RGB888"
+			picam2.start()
+			time.sleep(2)
+			img = picam2.capture_array()  #returns numpy array 
 		#picam2.capture_file("capture.jpg")
 		#img = cv2.imread('capture.jpg')
 		
-		picam2.stop()
-		print("DEBUG: captured image from camera")
-		cv2.imshow('color image from camera', img)
-		key = cv2.waitKey(0)
-		if key == 27: # if ESC is pressed, exit loop
-			cv2.destroyAllWindows()
-		print('DEBUG: onto greyscaling')
-
-
-		gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-		print("DEBUG: cv2 read")
-		print("DEBUG: image show called")
-		cv2.imshow('greyscale file from camera', gray_img)
-		key = cv2.waitKey(0)
-		if key == 27: # if ESC is pressed, exit loop
-			cv2.destroyAllWindows()	
-		
-
-		#config.HAAR_FACES
-		haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
-		faces_rect = haar_cascade.detectMultiScale(gray_img, 1.1, 9) 
-		for (x, y, w, h) in faces_rect: 
-			cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
-
-		cv2.imshow('Detected faces', img)
-		key = cv2.waitKey(0)
-		if key == 27: # if ESC is pressed, exit loop
-			cv2.destroyAllWindows()
-			
-
+			picam2.stop()
+			time.sleep(2)
+						
 		#data = np.fromstring(data.getvalue(), dtype=np.uint8)
 		# Decode the image data and return an OpenCV image.
 		#image = cv2.imdecode(data, 1)
