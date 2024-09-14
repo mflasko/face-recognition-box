@@ -32,6 +32,7 @@ def is_letter_input(letter):
 if __name__ == '__main__':
 	camera = config.get_camera()
 	box = hardware.Box()
+	print('capture starting...')
 	# Create the directory for positive training images if it doesn't exist.
 	if not os.path.exists(config.POSITIVE_DIR):
 		os.makedirs(config.POSITIVE_DIR)
@@ -43,9 +44,11 @@ if __name__ == '__main__':
 	if len(files) > 0:
 		# Grab the count from the last filename.
 		count = int(files[-1][-7:-4])+1
+	
 	print ('Capturing positive training images.')
 	print ('Press button or type c (and press enter) to capture an image.')
 	print ('Press Ctrl-C to quit.')
+	
 	while True:
 		# Check if button was pressed or 'c' was received, then capture image.
 		if box.is_button_up() or is_letter_input('c'):
@@ -72,7 +75,7 @@ if __name__ == '__main__':
 			if key == 27: # if ESC is pressed, exit loop
 				cv2.destroyAllWindows()	
 			"""
-			
+
 			#config.HAAR_FACES
 			haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
 			faces_rect = haar_cascade.detectMultiScale(gray_img, 1.1, 9) 
