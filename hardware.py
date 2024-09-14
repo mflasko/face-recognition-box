@@ -32,7 +32,7 @@ class Box(object):
 		#self.button_state = RPIO.input(config.BUTTON_PIN)
 		self.is_locked = False
 
-	def is_locked(self):
+	def is_box_locked(self):
 		return self.is_locked
 
 	def lock(self):
