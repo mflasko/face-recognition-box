@@ -71,4 +71,4 @@ class Box(object):
 		return False
 		"""
 
-		return False
+		return True

@@ -29,7 +29,8 @@ if __name__ == '__main__':
 		# Check if capture should be made.
 		# TODO: Check if button is pressed.
 		if box.is_button_up():
-			if not box.is_locked:
+			#if not box.is_locked:
+			if not box.is_locked():
 				# Lock the box if it is unlocked
 				box.lock()
 				print ("Box is now locked.")
