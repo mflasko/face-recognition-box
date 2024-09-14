@@ -27,7 +27,7 @@ BUTTON_UP   = True   # High signal
 # Start with a value of 3000, but you might need to tweak this value down if 
 # you're getting too many false positives (incorrectly recognized faces), or up
 # if too many false negatives (undetected faces).
-POSITIVE_THRESHOLD = 2000.0
+POSITIVE_THRESHOLD = 4100.0
 
 # File to save and load face recognizer model.
 TRAINING_FILE = 'training.xml'
@@ -50,7 +50,7 @@ FACE_HEIGHT = 112
 # Face detection cascade classifier configuration.
 # You don't need to modify this unless you know what you're doing.
 # See: http://docs.opencv.org/modules/objdetect/doc/cascade_classification.html
-HAAR_FACES         = 'haarcascade_frontalface_alt.xml'
+HAAR_FACES         = 'haarcascade_frontalface_default.xml'
 HAAR_SCALE_FACTOR  = 1.3
 HAAR_MIN_NEIGHBORS = 4
 HAAR_MIN_SIZE      = (30, 30)
