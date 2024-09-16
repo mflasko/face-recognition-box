@@ -36,6 +36,9 @@ if __name__ == '__main__':
 	buttontest = Button(2)
 	print('green led on')
 	green.on()
+	time.sleep(5)
+	print('green off')
+	green.off()
 	print('red LED OFF')
 	red.off()
 	while True:
