@@ -2,10 +2,10 @@
 Treasure Box Script
 Copyright 2013 Tony DiCola 
 """
-import cv2
+#import cv2
 import time
 import config
-import face
+#import face
 import hardware
 from gpiozero import Button, LED, Servo
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
 	buttontest = Button(2)
 	print('green led on')
 	green.on()
-	time.sleep(5)
+	time.sleep(10)
 	print('green off')
 	green.off()
 	print('red LED OFF')
