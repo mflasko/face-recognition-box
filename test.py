@@ -6,14 +6,14 @@ Copyright 2013 Tony DiCola
 import time
 import config
 #import face
-import hardware
+#import hardware
 from gpiozero import Button, LED, Servo
 
 global tp
 
 def button_pressed():
 	tp = time.time()
-	box.blink_green_led(1)
+	#box.blink_green_led(1)
 
 def button_released():
 	tr = time.time()
