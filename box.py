@@ -101,7 +101,16 @@ if __name__ == '__main__':
 
 
 	while True:
+		print('loop started')
+		if box.button.is_pressed:
+			print("Button is pressed")
+		else:
+			print("Button is not pressed")
 		
+		box.green_led.blink()
+
+		time.sleep(1)
+
 		'''
 		# Check if capture should be made.
 		# TODO: Check if button is pressed.
