@@ -24,16 +24,31 @@ class Box(object):
 		self.servo = Servo(config.LOCK_SERVO_PIN) #likely more to do here 
 		
 		
-		self.button = Button(config.BUTTON_PIN)
+		self.button = Button(config.BUTTON_PIN, hold_time=2)
+		self.button.when_pressed = button_pressed 
+		self.red_led = LED(config.RED_LED_PIN)  
+		self.green_led = LED(config.GREEN_LED_PIN)  
 		
+			
 		# original code
 		#RPIO.setup(config.BUTTON_PIN, RPIO.IN)
 		# Set initial box state.
 		#self.button_state = RPIO.input(config.BUTTON_PIN)
 		self.is_locked = False
 
+	def button_pressed():
+		self.button
+
 	def is_box_locked(self):
 		return self.is_locked
+
+	def blink_red_led(self, count):
+		for i in range(count):
+			self.red_led.blink()
+
+	def blink_green_led(self, count):
+		for i in range(count):
+			self.green_led.blink()
 
 	def lock(self):
 		"""Lock the box."""
