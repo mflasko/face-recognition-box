@@ -14,6 +14,7 @@ if __name__ == '__main__':
         print('green on')
         time.sleep(5)
         green.off()
+        time.sleep(5)
         print('green off')
 
         
