@@ -4,7 +4,7 @@ Copyright 2013 Tony DiCola
 """
 #import cv2
 import time
-import config
+#import config
 #import face
 #import hardware
 from gpiozero import Button, LED, Servo
@@ -21,7 +21,7 @@ def button_released():
 
 
 if __name__ == '__main__':
-	camera = config.get_camera()
+	#camera = config.get_camera()
 	#box = hardware.Box()
 	
 	print ("Running box...")
