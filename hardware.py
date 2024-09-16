@@ -25,7 +25,6 @@ class Box(object):
 		
 		
 		self.button = Button(config.BUTTON_PIN, hold_time=2)
-		self.button.when_pressed = button_pressed 
 		self.red_led = LED(config.RED_LED_PIN)  
 		self.green_led = LED(config.GREEN_LED_PIN)  
 		
@@ -35,9 +34,6 @@ class Box(object):
 		# Set initial box state.
 		#self.button_state = RPIO.input(config.BUTTON_PIN)
 		self.is_locked = False
-
-	def button_pressed():
-		self.button
 
 	def is_box_locked(self):
 		return self.is_locked

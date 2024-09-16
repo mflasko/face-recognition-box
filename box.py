@@ -91,7 +91,7 @@ if __name__ == '__main__':
 	camera = config.get_camera()
 	box = hardware.Box()
 	# Move box to locked position.
-	box.lock()
+	#box.lock()
 	print ("Running box...")
 	print ("Press button to lock (if unlocked), or unlock if the correct face is detected.")
 	print ("Press Ctrl-C to quit.")
