@@ -90,15 +90,16 @@ if __name__ == '__main__':
 	print ("Training data loaded!")
 	# Initialize camer and box.
 	camera = config.get_camera()
-	box = hardware.Box()
+	#box = hardware.Box()
+	box = None
 	# Move box to locked position.
 	#box.lock()
 	print ("Running box...")
 	print ("Press button to lock (if unlocked), or unlock if the correct face is detected.")
 	print ("Press Ctrl-C to quit.")
 
-	box.button.when_pressed = button_pressed
-	box.button.when_released = button_released
+	#box.button.when_pressed = button_pressed
+	#box.button.when_released = button_released
 
 	red = LED(17)
 	green = LED(27)	
