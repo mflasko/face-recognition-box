@@ -14,7 +14,7 @@ LOCK_SERVO_LOCKED   = 1100
 
 # Pi GPIO port which is connected to the button.
 
-BUTTON_PIN = 25
+BUTTON_PIN = 2
 RED_LED_PIN = 17
 GREEN_LED_PIN = 27
 
