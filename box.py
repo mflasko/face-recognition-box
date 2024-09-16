@@ -7,6 +7,7 @@ import time
 import config
 import face
 import hardware
+from gpiozero import Button, LED, Servo
 
 global tp
 
@@ -99,17 +100,25 @@ if __name__ == '__main__':
 	box.button.when_pressed = button_pressed
 	box.button.when_released = button_released
 
+	red = LED(17)
+	green = LED(27)	
+	buttontest = Button(2)
 
 	while True:
 		print('loop started')
-		if box.button.is_pressed:
+		if buttontest.is_pressed:
 			print("Button is pressed")
 		else:
 			print("Button is not pressed")
 		
-		box.green_led.blink()
-
+		red.on()
 		time.sleep(1)
+		red.off()
+
+		green.on()
+		time.sleep(1)
+		green.off()
+
 
 		'''
 		# Check if capture should be made.
