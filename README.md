@@ -12,3 +12,13 @@ dtoverlay=imx519
 
 
 
+Raspberry pi setup: 
+
+1) RaspberryPiBox - credentials in app 
+2) Run commands to setup a fresh PI: 
+
+sudo apt update
+sudo upt upgrade
+sudo apt install python3-gpiozero
+
+
