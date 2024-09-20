@@ -5,6 +5,8 @@ global tp
 
 #Button.was_held = False
 
+Button.was_held = False
+
 def held(btn):
     btn.was_held = True
     print("button was held not just pressed")
@@ -23,8 +25,7 @@ if __name__ == '__main__':
     print ("Press Ctrl-C to quit.")
     green = LED(17)
     btn = Button(27)
-    btn.was_held = False
-    
+        
     btn.when_held = held
     btn.when_released = released
 
