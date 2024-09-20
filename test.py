@@ -21,7 +21,7 @@ if __name__ == '__main__':
     print ('running box')
     print ("Press button to lock (if unlocked), or unlock if the correct face is detected.")
     print ("Press Ctrl-C to quit.")
-    green = LED(27)
+    green = LED(17)
     btn = Button(27)
     btn.was_held = False
     
