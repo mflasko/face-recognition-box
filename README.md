@@ -20,5 +20,11 @@ Raspberry pi setup:
 sudo apt update
 sudo upt upgrade
 sudo apt install python3-gpiozero
+mkdir github
+mkdir python
+cd github
+git clone https://github.com/mflasko/face-recognition-box.git
+cd ../python
+python3 -m venv wsm --system-site-packages
 
 
