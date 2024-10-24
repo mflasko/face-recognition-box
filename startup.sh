@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# to make exexcutable: chmod +x startup.sh
+# to run it on each pi boot: 
+# sudo crontab -e
+# @reboot /home/flasko/github/face-recognition-box/startup.sh
+
 echo "box startup script started"
 # start the alternate pin factory daemon
 sudo pigpiod
@@ -7,6 +12,6 @@ sudo pigpiod
 source /home/flasko/python/wsm/bin/activate
 
 echo "starting box program"
-python box.py
+python /home/flasko/github/face-recognition-box/box.py
 
 

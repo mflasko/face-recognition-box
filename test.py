@@ -2,7 +2,8 @@ import time
 from gpiozero import Button, LED, Servo, Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 
-global tp
+global pressTime
+pressTime = 0
 
 Device.pin_factory = PiGPIOFactory()
 
@@ -19,7 +20,11 @@ def released(btn):
     btn.was_held = False
 
 def pressed(btn):
-    print("button was pressed not held")
+    newTime = time.time()
+    if pressTime > 0 and (newTime - pressTime) > 1:
+        #no button bounce - valid second press
+        pressTime = newTime
+        print("button was pressed not held")
 
 if __name__ == '__main__':
     print ('running box')
