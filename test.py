@@ -1,9 +1,9 @@
 import time
-from gpiozero import Button, LED, Servo
+from gpiozero import Button, LED, Servo, Device
 
 global tp
 
-#Button.was_held = False
+Device.pin_factory = gpiozero.pins.pigpio.PiGPIOFactory()
 
 Button.was_held = False
 
