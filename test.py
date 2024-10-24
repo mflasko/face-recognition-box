@@ -17,6 +17,7 @@ def released(btn):
     if not btn.was_held:
         pressed(btn)
     btn.was_held = False
+    pressTime = time.time()
 
 def pressed(btn):
     global pressTime
