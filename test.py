@@ -10,14 +10,21 @@ Button.was_held = False
 
 
 def held(btn):
+    global pressTime
     btn.was_held = True
     print("button was held not just pressed")
+    print(f"presstime: {pressTime} \n")
 
 def released(btn):
+    global pressTime
     if not btn.was_held:
         pressed(btn)
+    else:
+        print("button released no press called")
+        
     btn.was_held = False
     pressTime = time.time()
+    print(f"presstime: {pressTime} \n")
 
 def pressed(btn):
     global pressTime
@@ -27,7 +34,7 @@ def pressed(btn):
     if timeDiff > 1:
         #no button bounce - valid second press
         pressTime = newTime
-        print("button was pressed not held")
+        print("button was pressed not held \n")
 
 if __name__ == '__main__':
     print ('running box')
