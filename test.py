@@ -19,11 +19,11 @@ def released(btn):
     btn.was_held = False
 
 def pressed(btn):
-    newTime = time.time()
     global pressTime
+    newTime = time.time()
     timeDiff = newTime - pressTime
     print(f"button pressed entered -- presstime:{pressTime} ; timeDiff:{timeDiff}")
-    if pressTime > 0 and timeDiff > 1:
+    if timeDiff > 1:
         #no button bounce - valid second press
         pressTime = newTime
         print("button was pressed not held")
