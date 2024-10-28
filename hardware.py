@@ -1,14 +1,15 @@
-from gpiozero import Button, LED, Servo
+from gpiozero import Button, LED, Servo, Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 import time
 import cv2
 import config
 
-
-
+pressTime = 0
+Button.was_held = False
 
 class Box():
     def __init__(self, model):
+        Device.pin_factory = PiGPIOFactory()
         self.box_green_led = LED(config.GREEN_LED_PIN)
         self.box_red_led = LED(config.RED_LED_PIN)
         self.box_button = Button(config.BUTTON_PIN)
