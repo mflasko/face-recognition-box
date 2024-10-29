@@ -26,7 +26,7 @@ GREEN_LED_PIN = 17
 # Start with a value of 3000, but you might need to tweak this value down if 
 # you're getting too many false positives (incorrectly recognized faces), or up
 # if too many false negatives (undetected faces).
-#POSITIVE_THRESHOLD = 4100.0
+POSITIVE_THRESHOLD = 4700.0
 
 # File to save and load face recognizer model.
 TRAINING_FILE = 'training.xml'

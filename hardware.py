@@ -111,8 +111,8 @@ class Box():
             # Test face against model.
             label, confidence = self.model.predict(crop)
             print(f"Predicted {'POSITIVE' if label == config.POSITIVE_LABEL else 'NEGATIVE'} face with confidence {confidence} (lower is more confident).")
-        #if label == config.POSITIVE_LABEL and confidence < config.POSITIVE_THRESHOLD:
-        if label == config.POSITIVE_LABEL:
+        if label == config.POSITIVE_LABEL and confidence < config.POSITIVE_THRESHOLD:
+        #if label == config.POSITIVE_LABEL:
             print ("Recognized face!")
             return True
         else:
