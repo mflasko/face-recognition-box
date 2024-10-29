@@ -8,7 +8,7 @@ pressTime = 0
 Button.was_held = False
 
 class Box():
-    def __init__(self, model):
+    def __init__(self):
         Device.pin_factory = PiGPIOFactory()
         self.box_green_led = LED(config.GREEN_LED_PIN)
         self.box_red_led = LED(config.RED_LED_PIN)
@@ -17,11 +17,24 @@ class Box():
         
 		# Initialize camera
         self.camera = config.get_camera()
-        # the model to use for face recognization 
-        self.model = model
-		
+        
+        #set button handlers 
         self.box_button.when_held = self.button_held
         self.box_button.when_released = self.button_released
+
+        #no model set yet
+        self.model = None
+
+    def set_model(self, model):
+        self.model = model
+
+    def box_boot_start(self):
+        self.box_green_led.on()
+        self.box_red_led.on()
+
+    def box_boot_end(self):
+        self.box_green_led.off()
+        self.box_red_led.off()
 
     def button_held(self, btn):
         #global pressTime
@@ -55,8 +68,9 @@ class Box():
         self.box_servo.max()
 
     def try_unlock_box(self):
-        if True:
-        #if self.is_face_detected():
+        if self.model is None:
+            return False
+        if self.is_face_detected():
             self.box_green_led.blink(n=2)
             self.box_servo.min()
             #TODO: unlock box servo change
@@ -64,10 +78,6 @@ class Box():
         else:
             self.box_red_led.blink(n=2)
             print('face not detected blinked red LED')
-
-    #def blink_LED(self, led, count):
-    #    for i in range(count):
-    #        led.blink()
 
     def is_face_detected(self):
         print('taking picture using the camera')

@@ -1,41 +1,37 @@
 import cv2
 import time
 import config
-#import face
 from hardware import Box
 #from gpiozero import Button, LED, Servo
 #from gpiozero.pins.pigpio import PiGPIOFactory
 
 
 if __name__ == '__main__':
+       
+    #boot box hardware
+    box = Box()
+    box.box_boot_start()
+
     # Load training data into model
     print ("Loading training data...")
 	#model = cv2.createEigenFaceRecognizer()
     model = cv2.face.EigenFaceRecognizer_create()
+
 	#model.load(config.TRAINING_FILE)
     model.read(config.TRAINING_FILE)
     print ("Training data loaded!")
 
-    box = Box(model)
-	
-    '''
-    #init box parts
-    box_green_led = LED(config.GREEN_LED_PIN)
-    box_red_led = LED(config.RED_LED_PIN)
-    box_button = Button(config.BUTTON_PIN)
-    box_servo = Servo(config.SERVO_PIN)
-    
+    box.set_model(model)
 
-    box_button.when_held = button_held
-    box_button.when_released = button_released
-    '''
-    
+    #stop boot sequence after model is set 
+    box.box_boot_end()
+
     print ("Running box...")
     print ("Press hold button to lock; press button to face detect and unlock")
     print ("Press Ctrl-C to quit.")
 
     while True:
-		# wait only terminated with Ctrl-c
+		# wait for ctrl-c to terminate
 
 
         ''''
