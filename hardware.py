@@ -57,12 +57,12 @@ class Box():
     def try_unlock_box(self):
         if True:
         #if self.is_face_detected():
-            self.box_green_led.blink()
+            self.box_green_led.blink(n=2)
             self.box_servo.min()
             #TODO: unlock box servo change
             print("face detected; unlocked box")		
         else:
-            self.box_red_led.blink()
+            self.box_red_led.blink(n=2)
             print('face not detected blinked red LED')
 
     #def blink_LED(self, led, count):
