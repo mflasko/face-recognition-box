@@ -27,15 +27,15 @@ class Box():
         #global pressTime
         btn.was_held = True
         self.try_lock_box()
-        #print("button was held not just pressed")
+        print("button was held not just pressed")
         #print(f"presstime: {pressTime} \n")
 
     def button_released(self, btn):
         global pressTime
         if not btn.was_held:
             self.button_pressed(btn)
-        #else:
-        #    print("button released no press called")
+        else:
+            print("button released no press called")
         btn.was_held = False
         pressTime = time.time()
         #print(f"presstime: {pressTime} \n")
@@ -48,7 +48,7 @@ class Box():
             #no button bounce
             pressTime = newTime
             self.try_unlock_box()
-            #print("button was pressed not held \n")
+            print("button was pressed not held \n")
 
     def try_lock_box(self):
         #TODO: move servo 
@@ -58,11 +58,12 @@ class Box():
         if True:
         #if self.is_face_detected():
             self.blink_LED(self.box_green_led, 3)
+            self.box_servo.min()
             #TODO: unlock box servo change
-            #print("face detected; unlocked box")		
+            print("face detected; unlocked box")		
         else:
             self.blink_LED(self.box_red_led, 3)
-            #print('face not detected blinked red LED')
+            print('face not detected blinked red LED')
 
     def blink_LED(self, led, count):
         for i in range(count):
