@@ -2,6 +2,7 @@ from gpiozero import Button, LED, Servo, Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 import time
 import cv2
+import face
 import config
 
 pressTime = 0
@@ -108,7 +109,7 @@ class Box():
             # Crop and resize image to face.
             crop = face.resize(face.crop(gray_img, x, y, w, h))
             # Test face against model.
-            label, confidence = model.predict(crop)
+            label, confidence = self.model.predict(crop)
             print(f"Predicted {'POSITIVE' if label == config.POSITIVE_LABEL else 'NEGATIVE'} face with confidence {confidence} (lower is more confident).")
         #if label == config.POSITIVE_LABEL and confidence < config.POSITIVE_THRESHOLD:
         if label == config.POSITIVE_LABEL:
