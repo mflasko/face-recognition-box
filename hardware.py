@@ -95,16 +95,16 @@ class Box():
         img = self.camera.read()
         
         print("Captured image from camera")
-        cv2.imshow('color image from camera', img)
-        key = cv2.waitKey(0)
-        if key == 27: # if ESC is pressed, exit loop
-            cv2.destroyAllWindows()
+        #cv2.imshow('color image from camera', img)
+        #key = cv2.waitKey(0)
+        #if key == 27: # if ESC is pressed, exit loop
+        #    cv2.destroyAllWindows()
         #print('Converting image to greyscale')
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        cv2.imshow('greyscale file from camera', gray_img)
-        key = cv2.waitKey(0)
-        if key == 27: # if ESC is pressed, exit loop
-            cv2.destroyAllWindows()	
+        #cv2.imshow('greyscale file from camera', gray_img)
+        #key = cv2.waitKey(0)
+        #if key == 27: # if ESC is pressed, exit loop
+        #    cv2.destroyAllWindows()	
 
         #config.HAAR_FACES
         haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') 
