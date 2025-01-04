@@ -22,7 +22,7 @@ if __name__ == '__main__':
     print ("Training data loaded!")
 
     box.set_model(model)
-
+    box.force_unlock_box()
     #stop boot sequence after model is set 
     box.box_boot_end()
 
