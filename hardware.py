@@ -65,8 +65,10 @@ class Box():
             print("button was pressed not held \n")
 
     def try_lock_box(self):
-        #TODO: move servo 
         self.box_servo.max()
+
+    def force_unlock_box(self):
+        self.box_servo.min()
 
     def try_unlock_box(self):
         if self.model is None:
