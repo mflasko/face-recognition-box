@@ -71,17 +71,22 @@ class Box():
         self.box_servo.min()
 
     def try_unlock_box(self):
-        if self.model is None:
-            self.box_red_led.blink(n=3)
-            return False
-        if self.is_face_detected():
-            self.box_green_led.blink(n=2)
-            self.box_servo.min()
-            print("face detected; unlocked box")
-            return True		
-        else:
+        try:
+            if self.model is None:
+                self.box_red_led.blink(n=3)
+                return False
+            if self.is_face_detected():
+                self.box_green_led.blink(n=2)
+                self.box_servo.min()
+                print("face detected; unlocked box")
+                return True		
+            else:
+                self.box_red_led.blink(n=2)
+                print('face not detected blinked red LED')
+                return False
+        except:
+            print('exception thrown trying to unlock')
             self.box_red_led.blink(n=2)
-            print('face not detected blinked red LED')
             return False
 
     def is_face_detected(self):
